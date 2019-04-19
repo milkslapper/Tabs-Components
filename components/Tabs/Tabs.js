@@ -13,10 +13,17 @@ class TabContent{
   constructor(tabNav,contentTabId){
     console.log('setup tab content',contentTabId)
     this.content = tabNav.querySelector( `.tabs-item[data-tab="${contentTabId}"]`)
+    this.tabNav = tabNav
   }
   toggle(){
+    this.reset()
     console.log('Clicked',this.content)
     this.content.classList.toggle('tabs-item-selected')
+  }
+  reset(){
+    this.tabNav.querySelectorAll('.tabs-item.tabs-item-selected').forEach(content => {
+      content.classList.remove('tabs-item-selected')
+    })
   }
 }
 const navigators = document.querySelectorAll('.tabs')
